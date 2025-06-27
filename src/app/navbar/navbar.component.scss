@@ -1,0 +1,64 @@
+@import 'src/styles/variables';
+
+.navbar-container {
+    display: flex;
+    background-color: $rich-black;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 5em;
+    height: 10vh;
+}
+
+.navbar-container p {
+    color: $white;
+    font-weight: bold;
+}
+
+.name-logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+}
+
+.name-logo p:nth-child(1) {
+    color: $imperial-red;
+}
+
+.navigation-links {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.navigation-links p {
+    &.active-link {
+        color: $imperial-red;
+        text-decoration: underline;
+    }
+}
+
+.navigation-links p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.contact-me-button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-me-button p {
+    color: $black;
+    background-color: $white;
+    padding: 0.8em;
+    border-radius: 0.5em;
+}
+
+.contact-me-button p:hover {
+    cursor: pointer;
+}
+
