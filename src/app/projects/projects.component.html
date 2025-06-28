@@ -1,1 +1,14 @@
-
+<div class="projects-container">
+    <h2>Projects Scraped from GitHub:</h2>
+    <div *ngIf="repos.length > 0">
+        <ul>
+            <li *ngFor="let repo of repos">
+                <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+                <p>{{ repo.description || 'No description available' }}</p>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="repos.length === 0">
+        <p>No repositories found.</p>
+    </div>
+</div>

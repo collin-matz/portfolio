@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 
 // custom components
@@ -10,6 +11,7 @@ import { ServicesComponent } from './services/services.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { EducationComponent } from './education/education.component';
+import { ContactMePopupComponent } from './contact-me-popup/contact-me-popup.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { EducationComponent } from './education/education.component';
     ServicesComponent,
     ExperienceComponent,
     ProjectsComponent,
-    EducationComponent
+    EducationComponent,
+    ContactMePopupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 11%;
+    margin-right: 11%;
+    margin-top: 4%;
+}
+
+a {
+    color: $savory-blue;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}

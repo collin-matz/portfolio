@@ -1,0 +1,18 @@
+<!-- Modal -->
+<div *ngIf="isModalOpen" class="modal">
+    <div class="modal-content">
+        <span id="exit"(click)="toggleModal()" style="text-align: right;">X</span>
+        <h2>Find me here!</h2>
+        <div class="icon-list">
+            <a href="mailto:collin.matz.a@gmail.com">
+                <img src="../../assets/icons/email.svg" [width]="iconSize">
+            </a>
+            <a href="https://github.com/collin-matz">
+                <img src="../../assets/icons/github.svg" [width]="iconSize">
+            </a>
+            <a href="https://www.linkedin.com/in/collinmatz/">
+                <img src="../../assets/icons/linkedin.svg" [width]="iconSize">
+            </a>
+        </div>
+    </div>
+</div>

@@ -62,8 +62,10 @@ h1, h2, h3 {
 
 #view-my-work:hover {
     cursor: pointer;
-    color: $white;
     background-color: $savory-blue;
+    a {
+        color: $white;
+    }
 }
 
 #smaller-text {
