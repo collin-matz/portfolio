@@ -10,9 +10,46 @@
 
 a {
     color: $savory-blue;
+
+    &:hover {
+        text-decoration: underline;
+        color: $imperial-red;
+    }
 }
 
 ul {
     list-style-type: none;
     padding-left: 0;
+}
+
+.repo {
+    border-left: 2px solid $almond;
+    border-right: 2px solid $almond;
+    padding: 1em;
+    margin-top: 1.5em;
+    transition-duration: 0.3s;
+
+    &:hover {
+        transform: scale(1.01);
+        border-color: $imperial-red;
+    }
+}
+
+.title-and-languages {
+    display: flex;
+    flex-direction: column;
+
+    p {
+        opacity: 50%;
+    }
+}
+
+.languages-container {
+    display: flex;
+    gap: 1em;
+}
+
+.language-image-and-title {
+    display: flex;
+    gap: 0.5em;
 }

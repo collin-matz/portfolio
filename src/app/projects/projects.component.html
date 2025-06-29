@@ -1,14 +1,29 @@
 <div class="projects-container">
-    <h2>Projects Scraped from GitHub:</h2>
+    <h2>Projects from GitHub</h2>
+    <p>These are projects I have publicly displayed on my <a href="https://github.com/collin-matz">GitHub</a>.
+        For more information, click any of the titles to
+        go to that repository's GitHub page.
+    </p>
     <div *ngIf="repos.length > 0">
-        <ul>
-            <li *ngFor="let repo of repos">
-                <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+        <ul class="repos-list">
+            <li *ngFor="let repo of repos" class="repo">
+                <div class="title-and-languages">
+                    <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+                    <ul class="languages-container" *ngIf="percentageKeys(repo.percentages).length > 0">
+                        <li *ngFor="let lang of percentageKeys(repo.percentages)">
+                            <span class="language-image-and-title">
+                                <img src="https://cdn.simpleicons.org/{{ getLangMapping(lang) }}" [alt]=lang width="20"/>
+                                <p>{{ repo.percentages[lang] | percent:'1.1-1' }}</p>
+                            </span>
+                        </li>
+                    </ul>
+                    <p *ngIf="percentageKeys(repo.percentages).length === 0">No language data found for this repo.</p>
+                </div>
                 <p>{{ repo.description || 'No description available' }}</p>
             </li>
         </ul>
     </div>
     <div *ngIf="repos.length === 0">
-        <p>No repositories found.</p>
+        <p>Loading...</p>
     </div>
 </div>

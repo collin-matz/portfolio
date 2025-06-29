@@ -31,9 +31,25 @@ export class GithubService {
               // make a new request to get the languages for the repo
               return this.http.get<any>(repo.languages_url).pipe(
                 map((language_data) => {
+                  // generate percentages for each language in this
+                  // repo
+
+                  let percentages: Record<string, number> = {};
+                  let total: number = 0;
+                  Object.values(language_data).forEach(count => {
+                    total += Number(count);
+                  });
+
+                  // once the total is counted, calculate percentages
+                  if (total > 0) {
+                    Object.entries(language_data).forEach(([lang, count]) => {
+                      percentages[lang] = Number(count) / total;
+                    });
+                  }
+
                   return {
                     ...repo,
-                    language_data
+                    percentages
                   }
                 })
               );
