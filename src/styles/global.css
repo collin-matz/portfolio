@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: white;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-weight: 300;
+    scroll-behavior: smooth;
+    
+}
+
+body {
+    padding: 4em;
+    line-height: 1.5;
+}
+
+p, li, summary {
+    width: fit-content;
+    color: gray;
+}
+
+summary:hover {
+    color: black;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+    transition-duration: 0.2s;
+}
+
+button {
+    background: none;
+    border: 1px solid lightgray;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    background-color: lightgray;
+}
+
+a:hover {
+    color: black;
+}

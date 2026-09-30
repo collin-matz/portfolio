@@ -1,11 +1,161 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SkillCard from '../components/SkillCard.astro';
+import ContactCard from '../components/ContactCard.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// imported data from the CV data file
+import { personal, education, research, experience, skills, projects } from '../data/cv.ts';
+
+const year = new Date().getFullYear();
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{personal.firstname} {personal.lastname}'s CV</title>
+	</head>
+	<Navigation />
+	<body>
+		<div class="section-container">
+			<SectionLayout id="about">
+				<div class="welcome-msg-div">
+					<div id="picture-and-name">
+						<img id="profile-pic" src="src/assets/headshot.jpg"/>
+						<h1>Hello, I'm {personal.firstname} {personal.lastname}</h1>
+					</div>
+					<h4>{personal.description}</h4>
+					<p>Scroll down to find featured information from my CV.</p>
+					<!-- <button>Download CV</button> -->
+				</div>
+			</SectionLayout>
+
+			<SectionLayout id="education" title="Education"
+				desc="B.S. and M.S. in Computer Science with coursework focusing on AI/ML, Linear Algebra, and Statistics.">
+				{education.map((e) => (
+					<ExperienceCard 
+					title={`${e.degree} (GPA: ${e.gpa})`}
+					subtitle={e.university} 
+					dates={e.dates}
+					location={e.location}
+					bullet_summary="Coursework"
+					bullets={e.courses} />
+				))}
+			</SectionLayout>
+
+			<SectionLayout id="research" title="Featured Research"
+				desc={personal.research_interests} >
+				{research.map((r) => (
+					<ProjectCard 
+					title={r.title}
+					link={r.link}
+					link_title={r.link_title}
+					description={r.description} />
+				))}
+			</SectionLayout>
+
+			<SectionLayout id="experience" 
+				title="Professional Experience" 
+				desc="Over 3 years of experience working with sensor fusion, machine learning, and statistical and scientific programming.">
+				{experience.map((job) => (
+					<ExperienceCard 
+						title={job.role}
+						subtitle={job.company}
+						dates={job.dates}
+						location={job.location} 
+						description={job.description}
+						bullet_summary={job.bullet_summary}
+						bullets={job.bullets}
+						tags={job.tags}/>
+					// title, subtitle, dates, location, description, bullet_summary, bullets, tags
+				))}
+			</SectionLayout>
+
+			<SectionLayout id="skills" 
+				title="Technical Skills"
+				desc="Experience with agile software development tools, scientific and systems programming, web and app design, and robotics." >
+				<div class="skills-container">
+					{skills.map((skill) => <SkillCard {...skill} />)}
+				</div>
+			</SectionLayout>
+
+			<SectionLayout id="projects" 
+				title="Featured Projects">
+				{projects.map((p) => (
+					<ProjectCard 
+					title={p.title}
+					link={p.demo_link}
+					link_title={p.link_title}
+					description={p.description}
+					tags={p.tags} />
+				))}
+			</SectionLayout>
+
+			<SectionLayout id="contact" 
+				title="Let's Work Together"
+				desc="For professional inquiries, please use my personal email. For research inquiries, please use my academic email.">
+				<ContactCard title="Personal Email" subtitle={personal.personal_email} link=`mailto:${personal.personal_email}`/>
+				<ContactCard title="Academic Email" subtitle={personal.academic_email} link=`mailto:${personal.academic_email}`/>
+			</SectionLayout>
+		</div>
+	</body>
+	<footer><p>@ {year} {personal.firstname} {personal.lastname}</p></footer>
+</html>
+
+<style>
+	footer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 10vh;
+		/* height: 10vh; */
+	}
+	.section-container {
+		display: flex;
+		flex-direction: column;
+		row-gap: 8rem;
+	}
+	.skills-container {
+		width: 75%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto rows;
+		gap: 1em;
+	}
+
+	.welcome-msg-div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.welcome-msg-div h1 {
+		margin: 0
+	}
+
+	.welcome-msg-div h4 {
+		color: gray;
+	}
+
+	#profile-pic {
+		border-radius: 50%;
+		border: 1px solid black;
+		height: 12rem
+	}
+
+	#picture-and-name {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		flex-wrap: wrap;
+		column-gap: 2rem;
+		width: 65%;
+	}
+</style>

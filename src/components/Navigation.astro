@@ -1,0 +1,57 @@
+---
+let name = "Collin Matz"
+---
+<nav>
+    <p>{name}</p>
+    <div class="navbar">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+
+<style>
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        background: white;
+
+        padding-inline: 1.5em;
+        border-bottom: 1px solid lightgray;
+        background: white;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        gap: 2em;
+        flex-grow: 8;
+    }
+
+    p {
+        flex-grow: 1;
+        font-weight: 500;
+        font-size: large;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+</style>

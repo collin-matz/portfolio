@@ -1,0 +1,96 @@
+---
+import '../styles/global.css';
+const { title, subtitle, description, link, link_title, bullet_summary, bullets, tags } = Astro.props;
+---
+
+<div class="container">
+    <div class="row">
+        <h5>{title}</h5>
+        {link_title && (<a id="link" href={link}>{link_title}</a>)}
+    </div>
+
+    <div class="row">
+        {subtitle && <h5>{subtitle}</h5>}
+    </div>
+    
+    {description && (<div class="row" id="description">
+        <p>{description}</p>
+    </div>)}
+
+    {bullets && bullets.length > 0 && (
+        <details open>
+            <summary>{bullet_summary}</summary>
+            <ul class="bullets-list">
+                {bullets.map((bullet: string, i: number) => (
+                    <li class="bullet" key={i}>{bullet}</li>
+                ))}
+            </ul>
+        </details>
+    )}
+
+    {tags && tags.length > 0 && (
+        <div class="tag-list">
+            {tags.map((tag: string) => (
+                <p class="tag">{tag}</p>
+            ))}
+        </div>
+    )}
+</div>
+
+<style>
+    h5 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    p, li {
+        margin: 0;
+    }
+
+    ul {
+        padding-left: 1.25rem;
+        margin: 0.5rem 0 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid lightgray;
+        border-radius: 1em;
+        padding: 1em;
+        width: 75%;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tag-list {
+        display: flex;
+        column-gap: 1em;
+        row-gap: 1em;
+        margin-top: 1em;
+        flex-wrap: wrap;
+    }
+
+    .tag {
+        text-align: center;
+        justify-content: center;
+
+        padding: 0.3em;
+        border: 1px solid lightgray;
+        border-radius: 0.5em;
+        font-size: small;
+        font-weight: bolder;
+        color: black;
+    }
+
+    #link {
+        text-decoration: underline;
+    }
+
+    #description {
+        margin-top: 1rem;
+    }
+</style>
