@@ -5,6 +5,8 @@ import ProjectCard from '../components/ProjectCard.astro';
 import SkillCard from '../components/SkillCard.astro';
 import ContactCard from '../components/ContactCard.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
+import { Image } from 'astro:assets';
+import headshot from '../assets/headshot.jpg'
 
 // imported data from the CV data file
 import { personal, education, research, experience, skills, projects } from '../data/cv.ts';
@@ -28,7 +30,7 @@ const year = new Date().getFullYear();
 			<SectionLayout id="about">
 				<div class="welcome-msg-div">
 					<div id="picture-and-name">
-						<img id="profile-pic" src="src/assets/headshot.jpg"/>
+						<Image id="profile-pic" src={headshot} alt="Profile photo" height={200} />
 						<h1>Hello, I'm {personal.firstname} {personal.lastname}</h1>
 					</div>
 					<h4>{personal.description}</h4>
@@ -146,7 +148,6 @@ const year = new Date().getFullYear();
 	#profile-pic {
 		border-radius: 50%;
 		border: 1px solid black;
-		height: 12rem
 	}
 
 	#picture-and-name {
